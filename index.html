@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Rosa Adela</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #fff5f5;
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, #ff6b8b, #ff8e53);
+        }
+        
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #ff6b8b;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        .love-image {
+            margin: 25px auto;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid #ffccd5;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        .love-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .message {
+            font-size: 1.1rem;
+            margin: 25px 0;
+            padding: 20px;
+            background-color: #fff9fb;
+            border-radius: 10px;
+            border-left: 5px solid #ff6b8b;
+            text-align: left;
+            animation: slideUp 1s ease-out;
+        }
+        
+        .anniversary {
+            margin-top: 20px;
+            font-weight: 600;
+            color: #ff6b8b;
+            font-size: 1.2rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+        
+        .signature {
+            margin-top: 30px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #ff4757;
+            animation: fadeIn 2.5s ease-in-out;
+        }
+        
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(255, 105, 180, 0.6);
+            animation: float 5s ease-in-out infinite;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .love-image {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .message {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Untuk Pacarku Tersayang</h1>
+        
+        <div class="love-image">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9b37048b-c6b7-4fe2-89c9-6ac19054b0fa.png" alt="Romantic heart illustration with glowing pink and red colors, surrounded by floating small hearts" />
+        </div>
+        
+        <div class="message">
+            <p>Rosa Adela yang cantik,</p>
+            <p>Setiap hari bersamamu adalah anugerah terindah dalam hidupku. Kamu membuat dunia terasa lebih berwarna dengan cintamu yang tulus dan kasih sayangmu yang tak terbatas.</p>
+            <p>Aku bersyukur bisa memilikimu dalam hidupku. Kamu adalah alasan di balik setiap senyumku, motivasi di setiap langkahku, dan cinta di setiap detak jantungku.</p>
+            <p>Terima kasih telah menjadi bagian dari hidupku dan membuat setiap momen bersamamu terasa begitu istimewa.</p>
+        </div>
+        
+        <div class="anniversary">
+            <p>Sejak 3 Mei 2025</p>
+            <p>Hari ketika cinta kita bersemi</p>
+        </div>
+        
+        <div class="signature">
+            <p>Aku mencintaimu</p>
+        </div>
+        
+        <div class="hearts" id="hearts-container"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create floating hearts
+            const heartsContainer = document.getElementById('hearts-container');
+            
+            function createHeart() {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+                heartsContainer.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000);
+            }
+            
+            // Initial hearts
+            for (let i = 0; i < 15; i++) {
+                setTimeout(createHeart, i * 300);
+            }
+            
+            // Continuous hearts
+            setInterval(createHeart, 300);
+            
+            // Interactive effect
+            document.addEventListener('mousemove', function(e) {
+                const x = e.clientX;
+                const y = e.clientY;
+                
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤';
+                heart.style.left = x + 'px';
+                heart.style.top = y + 'px';
+                heart.style.animationDuration = '3s';
+                heartsContainer.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 3000);
+            });
+            
+            // Typewriter effect for signature
+            const signature = document.querySelector('.signature p');
+            const text = "I love you Rosa Adela";
+            let i = 0;
+            
+            function typeWriter() {
+                if (i < text.length) {
+                    signature.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            }
+            
+            setTimeout(typeWriter, 2000);
+        });
+    </script>
+</body>
+</html>
+
